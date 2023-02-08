@@ -73,8 +73,8 @@ jobs:
         id: determine_url
         run: |
           echo "Determining base URL according to some criteria..."
-          echo "BASE_URL=${{ env.SITE_URL }}" >> $GITHUB_ENV
-          echo ${{ env.SITE_URL }}
+          echo "BASE_URL=$SITE_URL" >> $GITHUB_ENV
+          echo $SITE_URL
           
       # Placeholder - this step would be some action or run commands that deploys the code
       - name: Deploy to test env
@@ -108,7 +108,7 @@ jobs:
         id: determine_url
         run: |
           echo "Determining base URL according to some criteria..."
-          echo "BASE_URL=${{ env.SITE_URL }}" >> $GITHUB_ENV
+          echo "BASE_URL=$SITE_URL" >> $GITHUB_ENV
           
       # Placeholder - this step would be some action or run commands that deploys the code
       - name: Deploy to test env
