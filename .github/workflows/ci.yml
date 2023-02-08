@@ -63,17 +63,18 @@ jobs:
     environment:
       name: test-env
       # Environment URL can be dynamic
-      url: https://${{ env.BASE_URL }}.test.company
+      url: https://${{ env.SITE_URL }}.test.company
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       
-      # Determining hte target URL can for example be done in a separate step like this
+      # Determining the target URL can for example be done in a separate step like this
       - name: Determine base url
         id: determine_url
         run: |
           echo "Determining base URL according to some criteria..."
           echo "BASE_URL=${{ env.SITE_URL }}" >> $GITHUB_ENV
+          echo ${{ env.SITE_URL }}
           
       # Placeholder - this step would be some action or run commands that deploys the code
       - name: Deploy to test env
@@ -102,7 +103,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       
-      # Determining hte target URL can for example be done in a separate step like this
+      # Determining the target URL can for example be done in a separate step like this
       - name: Determine base url
         id: determine_url
         run: |
@@ -113,8 +114,8 @@ jobs:
       - name: Deploy to test env
         if: ${{ success() }}
         run: |
-          echo "Deploying to test environment - ${{ env.BASE_URL }}..."
-          echo "This step would be replaced with e.g. a Marketplace Action for deploying to some target test env..."
+          echo "Deploying to prod environment - ${{ env.BASE_URL }}..."
+          echo "This step would be replaced with e.g. a Marketplace Action for deploying to some target production env..."
       
       # Download and pack the code
       - name: Upload artifact
